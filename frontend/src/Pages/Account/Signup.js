@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 
 import styled from "styled-components";
 
 const Background = styled.div`
-    width: 430px;
-    height: 550px;
+    width: 500px;
+    height: 900px;
     position: absolute;
     transform: translate(-50%,-50%);
     left: 50%;
@@ -24,8 +24,8 @@ const Shape = styled.div`
 `;
 
 const Form = styled.form `
-    height: 550px;
-    width: 400px;
+    height: 900px;
+    width: 470px;
     background-color: rgba(255,255,255,0.13);
     position: absolute;
     transform: translate(-50%,-50%);
@@ -99,7 +99,13 @@ const Text = styled.h6 `
 `
 
 function Signup(props) {
+    const [firstName, setFirstName] = useState();
+    const [lastName, setLastName] = useState();
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
+    const [confirmPassword, setConfirmPassword] = useState();
 
+    const submitHandler = () => {};
 
     return (
         <>
@@ -110,16 +116,25 @@ function Signup(props) {
             <Form>
                 <FormProperties>
                     <Heading>Signup Here</Heading>
+
+                    <Label>First Name:</Label>
+                    <Input type='text' placeholder="First Name" onChange={(e) => setFirstName(e.target.value)}/>
+
+                    <Label>Last Name:</Label>
+                    <Input type='text' placeholder="Last Name" onChange={(e) => setLastName(e.target.value)}/>
                     
-                    <Label>Username:</Label>
-                    <Input type='text' placeholder="Email" />
+                    <Label>Email:</Label>
+                    <Input type='text' placeholder="Email" onChange={(e) => setEmail(e.target.value)}/>
 
                     <Label>Password:</Label>
-                    <Input type='password' placeholder="Password" />
+                    <Input type='password' placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
 
-                    <Button firstchild>Signup</Button>
+                    <Label>Confirm Password:</Label>
+                    <Input type='password' placeholder="Confirm Password" onChange={(e) => setConfirmPassword(e.target.value)}/>
+
+                    <Button firstchild onClick={submitHandler}>Signup</Button>
                     <Text>Or</Text>
-                    <Button lastchild onClick={() => props.onFormSwitch('login')}>Login for an account</Button>
+                    <Button lastchild onClick={() => props.onFormSwitch('login')}>Have an account? Sign in here!</Button>
                 </FormProperties>
             </Form>
         </>

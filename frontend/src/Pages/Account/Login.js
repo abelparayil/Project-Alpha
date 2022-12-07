@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 
 import styled from "styled-components";
 
 const Background = styled.div`
-    width: 430px;
+    width: 480px;
     height: 550px;
     position: absolute;
     transform: translate(-50%,-50%);
@@ -25,7 +25,7 @@ const Shape = styled.div`
 
 const Form = styled.form `
     height: 550px;
-    width: 400px;
+    width: 450px;
     background-color: rgba(255,255,255,0.13);
     position: absolute;
     transform: translate(-50%,-50%);
@@ -100,6 +100,10 @@ const Text = styled.h6 `
 
 function Login(props) {
 
+    const [username, setUsername] = useState();
+    const [password, setPassword] = useState();
+
+    const submitHandler = () => {};
 
     return (
         <>
@@ -112,14 +116,14 @@ function Login(props) {
                     <Heading>Login Here</Heading>
                     
                     <Label>Username:</Label>
-                    <Input type='text' placeholder="Email" />
+                    <Input type='text' placeholder="Email" onChange={(e) => setUsername(e.target.value)}/>
 
                     <Label>Password:</Label>
-                    <Input type='password' placeholder="Password" />
+                    <Input type='password' placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
 
-                    <Button firstchild>Login</Button>
+                    <Button firstchild onClick={submitHandler}>Login</Button>
                     <Text>Or</Text>
-                    <Button lastchild onClick={() => props.onFormSwitch('signup')}>Signup for an account</Button>
+                    <Button lastchild onClick={() => props.onFormSwitch('signup')}>Don't have an account? Sign up here!</Button>
                 </FormProperties>
             </Form>
         </>
